@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Benne&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.form-control {
+  margin: 15px 0;
+}
+
+.form-control label {
+  margin: 4px 0;
+  display: block;
+  font-size: 18px;
+  font-family: "Benne", serif;
+  letter-spacing: 1px;
+}
+
+#loginForm button {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin: 22px 0;
+  color: #1e1e1e;
+  font-size: 20px;
+  font-family: "Benne", serif;
+  transition: transform 0.3s ease;
+}
+
+#loginForm button:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+#loginForm h2 {
+  text-align: center;
+  font-family: "Benne", serif;
+  font-size: 28px;
+  letter-spacing: 4px;
+  margin: 10px 0;
+}
+
+.form-control input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.container {
+  display: flex;
+  gap: 100px;
+  padding: 20px;
+  font-family: "Benne", serif;
+  font-size: 20px;
+}
+
+.form-container {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+}

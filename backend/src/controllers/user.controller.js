@@ -1,4 +1,5 @@
 import { User } from "../models/user.model.js";
+import { generateToken } from "../utils/createToken.js";
 
 const emailRegex = /^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const nameRegex = /^[A-Za-z\s'-]+$/;
@@ -105,11 +106,19 @@ const loginUser = async (req, res) => {
       });
     }
 
-    console.log("login successfull");
-    return res.status(200).json({
-      success: true,
-      message: "login Successfull",
-    });
+    const userWithoutPassword = user.toObject();
+    delete userWithoutPassword.password;
+    const token = generateToken(userWithoutPassword);
+
+    return res
+      .status(200)
+      .cookie("token", token, { httpOnly: true, secure: true })
+      .json({
+        success: true,
+        message: "login Successfull",
+        token: token,
+        user: userWithoutPassword,
+      });
   } catch (error) {
     console.error("failed to login", error.message);
   }
