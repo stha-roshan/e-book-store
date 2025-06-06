@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form" enctype="multipart/form-data">
+      <input type="text" name="name" id="name" />
+      <input type="text" name="price" id="price" />
+      <input type="text" name="description" id="description" />
+      <input type="file" name="image" id="image" />
+      <button type="submit">Create</button>
+    </form>
+
+    <script>
+      const form = document.getElementById("form");
+      const name = document.getElementById("name");
+      const price = document.getElementById("price");
+      const description = document.getElementById("description");
+      const image = document.getElementById("image");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("name", name.value.trim());
+        formData.append("price", price.value.trim());
+        formData.append("description", description.value.trim());
+        formData.append("image", image.files[0]);
+        try {
+          const response = await fetch("/ebookstore/products/create", {
+            method: "POST",
+            body: formData
+          });
+
+          if (!response.ok) {
+            const errorData = await response.json();
+            console.error(
+              "product creation failed: " + JSON.stringify(errorData)
+            );
+            alert("product creation failed: " + errorData.message);
+            return;
+          }
+
+          const result = await response.json();
+          console.log(result.message)
+          alert(result.message);
+        } catch (error) {
+          console.log("Something went wrong while creating product");
+        }
+      });
+    </script>
+  </body>
+</html>
