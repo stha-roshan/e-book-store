@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    height: 500px;
+    width: 350px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border-radius: 4px;
+    margin: 20px 10px;
+  }
+  
+  .container .book_container {
+    height: 65%;
+    padding: 11px 8px;
+    border-bottom: 1px solid rgb(134, 132, 132);
+  }
+  
+  .container .book_container .book_img {
+    height: 100%;
+    /* background: url(../images/icha.jpg); */
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  
+  .container .details {
+    padding: 4px 17px;
+    height: calc(100% - 65%);
+    overflow: hidden;
+  }
+  
+  .container .details p {
+    height: 43px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  
+  .container .details h2,
+  h3 {
+    margin-top: 3px;
+    height: 32px;
+    overflow: hidden;
+  }
+  
+  .container .details .buy {
+    padding: 4px 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgb(134, 132, 132);
+  }
+  
+  .container .details .buy:hover {
+    cursor: pointer;
+  }
+  
+  .product_Container{
+    /* background: aqua; */
+    min-height: 1200px;
+    padding: 50px 80px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }

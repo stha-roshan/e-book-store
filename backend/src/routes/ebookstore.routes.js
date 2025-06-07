@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { verifyUser } from "../middlewares/auth.middleware.js";
-import { createProduct } from "../controllers/product.controller.js";
+import { createProduct, fetchProducts } from "../controllers/product.controller.js";
 import multer from "multer";
 
 import path from "path";
@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 const router = Router()
 const upload = multer({dest: './uploads'})
 
+//gets
 router.get('/home', verifyUser, (req, res) => {
     const homePagePath = path.join(__dirname, "../../../frontend/templetes/index.html")
     res.sendFile(homePagePath)
@@ -22,6 +23,13 @@ router.get('/products/create', (req, res) => {
     res.sendFile(createProductPath)
 })
 
-router.post('/products/create', upload.single('image'), createProduct)
+router.get('/products', verifyUser, (req, res) => {
+    const productsPath = path.join(__dirname, "../../../frontend/templetes/products.html")
+    res.sendFile(productsPath)
+})
+router.get('/products/fetch', fetchProducts)
 
+
+//posts
+router.post('/products/create', upload.single('image'), createProduct)
 export default router

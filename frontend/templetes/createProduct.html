@@ -7,10 +7,18 @@
   </head>
   <body>
     <form id="form" enctype="multipart/form-data">
+      <label for="name">Name: </label>
       <input type="text" name="name" id="name" />
+      <br>
+      <label for="price">price: </label>
       <input type="text" name="price" id="price" />
+      <br>
+      <label for="description">Description: </label>
       <input type="text" name="description" id="description" />
+      <br>
+      <label for="image">Image: </label>
       <input type="file" name="image" id="image" />
+      <br>
       <button type="submit">Create</button>
     </form>
 
@@ -47,6 +55,7 @@
           const result = await response.json();
           console.log(result.message)
           alert(result.message);
+          e.target.reset()
         } catch (error) {
           console.log("Something went wrong while creating product");
         }
