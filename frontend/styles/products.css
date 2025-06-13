@@ -77,10 +77,6 @@
     left: 200px;
     z-index: 10; /* Optional: to make sure it stays on top */
   }
-
-  .popupContainer .popup_p_container{
-    /* background-color: antiquewhite; */
-  }
   
   .popupContainer .popup_p_container .popup_p_book_container{
     height: 450px;
