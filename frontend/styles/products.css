@@ -65,3 +65,92 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
+
+  .popupContainer {
+    height: 800px;
+    width: 1500px; /* ✅ Add this */
+    padding: 40px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: fixed;
+    top: 80px;
+    left: 200px;
+    z-index: 10; /* Optional: to make sure it stays on top */
+  }
+
+  .popupContainer .popup_p_container{
+    /* background-color: antiquewhite; */
+  }
+  
+  .popupContainer .popup_p_container .popup_p_book_container{
+    height: 450px;
+    padding: 11px 8px;
+    border-bottom: 1px solid rgb(134, 132, 132);
+  }
+
+  .popupContainer .popup_p_container .popup_p_book_container .popup_p_book_img{
+    height: 100%;
+    /* background: url(https://res.cloudinary.com/doriurxyu/image/upload/v1749283879/rknogqwfvq58spvospf9.jpg); */
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .popupContainer .popup_p_container .popup_p_details{
+    padding: 4px 17px;
+    /* height: calc(100% - 65%); */
+    overflow: hidden;
+  }
+
+  .popupContainer .popup_p_container .popup_p_details p{
+    height: 43px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  
+  .popupContainer .popup_p_container .popup_p_details h2,
+  h3 {
+    margin-top: 3px;
+    height: 32px;
+    overflow: hidden;
+  }
+
+  .popupContainer .popup_p_container .popup_p_details .popup_p_buy {
+    padding: 4px 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgb(134, 132, 132);
+  }
+
+  .popupContainer .popup_p_container .popup_p_details .pay_image{
+    height: 60px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    border-radius: 4px;
+}
+
+.popupContainer .popup_p_container .popup_p_details .pay_image:hover{
+    cursor: pointer;
+}
+
+.popupContainer .popup_header{
+  display: flex;
+  justify-content: end;
+  /* background-color: aqua; */
+}
+
+.popupContainer .popup_header .cancle_button{
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgb(218, 218, 218);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.popupContainer .popup_header .cancle_button:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}

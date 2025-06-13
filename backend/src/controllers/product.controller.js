@@ -89,4 +89,38 @@ const fetchProducts = async (req, res) => {
     });
   }
 };
-export { createProduct, fetchProducts };
+
+const findProduct = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    if (!productId) {
+      console.log(`Product Id is requires`);
+      return res.status(400).json({
+        success: false,
+        message: "Product id is required",
+      });
+    }
+
+    const product = await Product.findById(productId);
+    if (!product) {
+      console.log(`Product with id: ${productId} not fount`);
+      return res.status(404).json({
+        success: false,
+        message: "Product Not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Product found",
+      product: product,
+    });
+  } catch (error) {
+    console.log("something went wrong searching product", error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occured while searching product",
+    });
+  }
+};
+export { createProduct, fetchProducts, findProduct };
