@@ -9,9 +9,9 @@ const createTransaction = async (req, res) => {
   try {
     const { productId } = req.body;
     const user = req.user;
-    console.log(user);
-    console.log(productId)
-    console.log(req.body)
+    // console.log(user);
+    // console.log(productId)
+    // console.log(req.body)
     const product = await Product.findById(productId);
     if (!product) {
       console.log(
