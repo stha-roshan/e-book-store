@@ -65,16 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchProducts();
 });
 
-const handelBuyNow = async (productId) => {
-  //create transaction
-  //get the transaction id for the unique transaction uuid
-  //use the price transaction uuid and product code as the signed feild
-  // create the esewa form
-  //pass the details of product such as name price in the form
-  //use the hmac key created by signing  price transaction uuid and product code as the signature
-  //if payment success then create order
-};
-
 const showConfirmBox = async (productId) => {
   try {
     const response = await fetch("/ebookstore/findProduct", {
@@ -124,11 +114,12 @@ const showConfirmBox = async (productId) => {
     </div>
   `;
     document.body.appendChild(popupContainer);
-    // console.log(`confirm to buy product : ${productId}`)
 
     popupContainer.addEventListener("click", (e) => {
       if (e.target.id === "cancle_button") {
         document.body.removeChild(popupContainer);
+      }else if(e.target.id === "e_sewa"){
+        // createTransaction(productDetail.name, productDetail.price, productDetail.image, productDetail._id)
       }
     });
   } catch (error) {
@@ -138,5 +129,21 @@ const showConfirmBox = async (productId) => {
     );
   }
 };
+
+
+const handelBuyNow = async (productId) => {
+  //create transaction
+  //get the transaction id for the unique transaction uuid
+  //use the price, transaction uuid, and product code as the signed feild
+  // create the esewa form
+  //pass the details of product such as name price in the form
+  //use the hmac key created by signing  price transaction uuid and product code as the signature
+  //if payment success then create order
+};
+
+function createTransaction(name, price, image, id){
+  console.log(`name: ${name}, price: ${price}, image url: ${image}, id: ${id}`)
+}
+
 
 //make scroll lock when pop up is active

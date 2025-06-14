@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { verifyUser } from "../middlewares/auth.middleware.js";
 import { createProduct, fetchProducts, findProduct } from "../controllers/product.controller.js";
-import { createTransaction } from "../controllers/transaction.controller.js";
+import { createTransaction, createSignature } from "../controllers/transaction.controller.js";
 import { createOrder } from "../controllers/order.controller.js";
 import multer from "multer";
 
@@ -43,6 +43,6 @@ router.post('/findProduct', upload.none(), findProduct)
 //admin should be loged in 
 router.post('/products/create', upload.single('image'), createProduct)
 router.post('/placeOrder', verifyUser, upload.none(), createOrder)
-
+router.post('/createSignature', upload.none(), createSignature)
 
 export default router

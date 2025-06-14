@@ -1,6 +1,7 @@
 import { Transaction } from "../models/transaction.model.js";
 import { User } from "../models/user.model.js";
 import { Product } from "../models/product.model.js";
+import { generateHash } from "../utils/crypto.js";
 
 const createTransaction = async (req, res) => {
   //product id from body
@@ -55,4 +56,52 @@ const createTransaction = async (req, res) => {
   }
 };
 
-export { createTransaction }
+
+const createSignature = async (req, res) => {
+  try {
+    const {transactionId, productId} = req.body
+
+    if(!transactionId){
+      console.log('Transaction id is required')
+      return res.status(400).json({
+        success: false,
+        message: "Transaction id is required"
+      })
+    }
+
+    if(!productId){
+      console.log('Product id is required')
+      return res.status(400).json({
+        success: false,
+        message: "Product id is required"
+      })
+    }
+    const product = await Product.findById(productId)
+    const total_amount = product?.price
+    const transaction_uuid = transactionId
+    const product_code = "EPAYTEST"
+
+    const signature = generateHash(total_amount, transaction_uuid, product_code)
+
+    if(!signature){
+      return res.status(500).json({
+        success: false,
+        message : "Failed to generate signature "
+    })
+    }
+    // console.log(`signature is ==> ${signature}`)
+
+    return res.status(200).json({
+      success: true,
+      message: 'Signature created successfully',
+      signature: signature
+    })
+  } catch (error) {
+    console.log('Error while creating signature')
+    return res.status(500).json({
+      success: false,
+      message: 'Something went wrong while creating signature'
+    })
+  }
+}
+export { createTransaction, createSignature }
